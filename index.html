@@ -13,31 +13,25 @@
             margin: 0 auto;
             padding: 0;
         }
-
         .questions,
         .answers {
             flex: 1;
         }
-
         .questions {
             padding: 0;
-            margin-right: 20px; /* Entfernt Abstand auf kleinen Bildschirmen */
+            margin-right: 20px;
         }
-
         .questions-list {
             display: flex;
             flex-direction: column;
-            height: 90vh; /* Höhe des Inhaltsbereichs */
-            overflow-y: auto; /* Scrollbalken bei Bedarf */
+            height: 90vh;
+            overflow-y: auto;
             padding: 10px;
             background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-
         .btn-custom {
-            background-color: #003366;
-            color: white;
             font-weight: bold;
             border: none;
             border-radius: 5px;
@@ -45,180 +39,79 @@
             font-size: 16px;
             margin-top: 5px;
             width: 100%;
-            display: block; /* Wichtig: block-Element */
+            background-color: #1A3A7A; /* Dunkel dunkelblau */
+            color: white;
         }
-
-        .btn-custom:hover {
-            background-color: #002244;
-            color: #e0e0e0;
-            transform: scale(1.02);
-        }
-
-        .btn-custom.active {
-            background-color: #d9a600; /* Dunkelgelb */
-            color: white; /* Textfarbe ändern, damit sie lesbar bleibt */
-        }
-
-        .answers {
-            width: 45%;
-            max-height: 85vh; /* Etwas weniger Höhe, um Platz für den oberen Abstand zu lassen */
-            overflow-y: auto;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            position: sticky; /* Sticky-Positionierung */
-            top: 20px; /* Abstand vom oberen Rand */
-            margin-top: 20px;
-        }
-
-        .question-title {
-            color: #003366;
-            font-weight: bold;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .questions {
-                margin-right: 0; /* Entfernt Abstand auf kleinen Bildschirmen */
-            }
-            .answers {
-                width: 90%; /* Für kleinere Bildschirme */
-                position: relative; /* Auf kleineren Bildschirmen relative Positionierung */
-            }
-            .questions-list {
-                height: auto; /* Höhe nach Inhalt anpassen */
-            }
-        }
-
-        /* Styles für Fehlermeldungen */
-        .error-message {
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        #video-wrapper {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        }
-
-        #video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .answer-image {
-            width: 100%; /* Breite des Bildes auf 100% des Containers */
-            height: auto; /* Höhe des Bildes automatisch anpassen */
-            margin-top: 10px;
-            border: 2px solid #ccc;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            transition: transform 0.2s ease;
-        }
-
-        .answer-image:hover {
-            transform: scale(1.05);
-        }
-
-        .image-wrapper {
-            text-align: right; /* Bild rechts ausrichten */
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-
-        .dark-mode .questions-list {
-            background-color: #1e1e1e;
-            border-color: #333;
-        }
-
-        .dark-mode .btn-custom {
-            background-color: #333;
-            color: #ffffff;
-        }
-
-        .dark-mode .btn-custom:hover {
-            background-color: #444;
-        }
-
-        .dark-mode .answers {
-            background-color: #1e1e1e;
-            border-color: #333;
-        }
-
-        .dark-mode .question-title {
-            color: #ffffff;
-        }
-
-        /* Beispiel für eine Transition bei Hover */
-        .btn-custom:hover {
-            background-color: #002244;
-            color: #e0e0e0;
-            transform: scale(1.02);
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-
-        /* Beispiel für eine Transition bei Klick */
         .btn-custom.active {
             background-color: #d9a600;
             color: white;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
-
-        /* Beispiel für eine einfache Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .answers {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -10%);
+            z-index: 1000;
+            width: 60%;
+            max-height: 70vh;
+            overflow-y: auto;
+            display: none;
         }
-
-        .answer-box {
-            animation: fadeIn 0.5s ease;
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: white;
+        }
+        .dark-mode .questions-list { background-color: #333; }
+        .dark-mode .btn-custom { background-color: #1A3A7A; color: white; }
+        .dark-mode .btn-custom.active { background-color: #d9a600; }
+        .dark-mode .answers { background-color: #444; color: white; }
+        .search-bar {
+            margin-bottom: 10px;
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .mode-toggle.sun {
+            color: #FFD700; /* Gold for sun */
+        }
+        .mode-toggle.moon {
+            color: #C0C0C0; /* Silver for moon */
         }
     </style>
 </head>
-<body>
-    <header>
-        <!-- Ihr Header -->
-    </header>
+<body class="dark-mode">
+    <button class="mode-toggle sun" onclick="toggleDarkMode()">☀️</button>
     <main class="container">
         <div class="questions">
-            <input type="text" class="form-control search-box" id="searchBox" placeholder="Caută întrebări..." onkeyup="searchQuestions()">
+            <select id="filterDropdown" class="form-control mb-3" onchange="filterQuestions()">
+                <option value="all">Toate</option>
+                <option value="video">Cu Video</option>
+                <option value="image">Cu Imagine</option>
+            </select>
             <div class="questions-list" id="questionsList"></div>
-            <div id="suggestionsList"></div> <!-- Hinzugefügt für Vorschläge -->
         </div>
         <div class="answers" id="answerBox">
-            <p>Alegeți o întrebare...</p>
+            <button class="btn btn-danger mb-2" onclick="closeAnswer()">Închide</button>
+            <div id="answerContent"></div>
         </div>
     </main>
-    <footer class="footer mt-auto py-3 bg-light">
-        <!-- Ihr Footer -->
-    </footer>
-    <button onclick="toggleDarkMode()">Dark Mode</button> <!-- Hinzugefügt für Dark Mode -->
     <script>
         const qa_data = [
            
@@ -526,52 +419,61 @@
             
         ];
 
-        function createButtons() {
+        function createButtons(data) {
             const questionsList = document.getElementById('questionsList');
             questionsList.innerHTML = '';
-            qa_data.forEach((item) => {
+            data.forEach((item) => {
                 const button = document.createElement('button');
-                button.classList.add('btn', 'btn-custom', 'btn-block'); // Apply custom class
+                button.classList.add('btn', 'btn-custom');
                 button.textContent = item.question;
-                button.onclick = () => {
-                    showAnswer(item.question);
-                    document.getElementById('answerBox').scrollIntoView({ behavior: 'smooth' });
-                    markiereFrage(button); // Markiere die aktuelle Frage
-                };
+                button.onclick = () => showAnswer(item);
                 questionsList.appendChild(button);
             });
         }
 
-        function showAnswer(question) {
-            const answer = qa_data.find(item => item.question === question).answer;
+        function showAnswer(item) {
             const answerBox = document.getElementById('answerBox');
-            answerBox.innerHTML = `
-                <h3 class="question-title">${question}</h3>
-                ${answer}
+            const answerContent = document.getElementById('answerContent');
+            answerContent.innerHTML = `
+                <h3>${item.question}</h3>
+                ${item.answer}
             `;
-            answerBox.classList.add('answer-box'); // Füge die Animation-Klasse hinzu
-            answerBox.scrollIntoView({ behavior: 'smooth' });
+            answerBox.style.display = 'block';
+            document.querySelectorAll('.btn-custom').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
         }
 
-        function markiereFrage(element) {
-            // Entferne die 'active'-Klasse von allen Fragen
-            let fragen = document.querySelectorAll('.btn-custom');
-            fragen.forEach(function(f) {
-                f.classList.remove('active');
+        function closeAnswer() {
+            const answerBox = document.getElementById('answerBox');
+            answerBox.style.display = 'none';
+        }
+
+        function filterQuestions() {
+            const filter = document.getElementById('filterDropdown').value;
+            const filteredData = qa_data.filter(item => {
+                if (filter === 'video') return item.answer.includes('<iframe');
+                if (filter === 'image') return item.answer.includes('<img');
+                return true;
             });
-
-            // Füge die 'active'-Klasse zur angeklickten Frage hinzu
-            element.classList.add('active');
+            createButtons(filteredData);
         }
-
-        
 
         function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+            const toggleButton = document.querySelector('.mode-toggle');
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                toggleButton.classList.remove('sun');
+                toggleButton.classList.add('moon');
+                toggleButton.innerHTML = '🌙';
+            } else {
+                toggleButton.classList.remove('moon');
+                toggleButton.classList.add('sun');
+                toggleButton.innerHTML = '☀️';
+            }
         }
 
-        // Initial build of the question buttons
-        createButtons();
+        document.addEventListener('DOMContentLoaded', () => createButtons(qa_data));
     </script>
 </body>
 </html>
